@@ -13,7 +13,7 @@ Erpnext docker image
  
 Install with:
 
-`docker run -d -p 80:80 --name erpnext -v /site1.local:/home/frappe/frappe-bench/sites/site1.local/ -v /mysql:/var/lib/mysql babim/erpnext``
+`docker run -d -p 80:80 --name erpnext -v /site1.local:/home/frappe/frappe-bench/sites/site1.local/ -v /mysql:/var/lib/mysql babim/erpnext`
 
 ## run data container
 `docker create -v /home/frappe/frappe-bench/sites/site1.local/ -v /var/lib/mysql --name erpdata babim/erpnext`
