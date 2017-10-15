@@ -13,7 +13,7 @@ RUN chmod +x /setup.sh
 RUN apt-get update && apt-get install -y wget ca-certificates sudo cron supervisor bash && \
     /usr/bin/supervisord
 
-RUN bash /setup.sh --setup-production && rm /home/frappe/*.deb
+RUN bash /setup.sh --setup-production && rm /home/frappe/*.deb /setup.sh
 #RUN wget https://raw.githubusercontent.com/frappe/bench/master/install_scripts/setup_frappe.sh && \
     #bash setup_frappe.sh --setup-production && \
     #rm /home/frappe/*.deb
