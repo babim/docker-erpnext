@@ -25,3 +25,9 @@ Install with:
 `docker exec -ti erpnext cat /root/frappe_passwords.txt`
 
 Login on http://localhost with Administrator / password
+
+```
+	"Frappe password: $FRAPPE_USER_PASS"
+	"MariaDB root password: $MSQ_PASS"
+	"Administrator password: $ADMIN_PASS"
+ ```
