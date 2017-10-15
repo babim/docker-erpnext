@@ -7,11 +7,17 @@ RUN useradd $FRAPPE_USER && mkdir /home/$FRAPPE_USER && chown -R $FRAPPE_USER.$F
 
 WORKDIR /home/$FRAPPE_USER
 
+COPY setup.sh /
+RUN chmod +x /setup.sh
+
 RUN apt-get update && apt-get install -y wget ca-certificates sudo cron supervisor bash && \
-    /usr/bin/supervisord && \
-    wget https://raw.githubusercontent.com/frappe/bench/master/install_scripts/setup_frappe.sh && \
-    bash setup_frappe.sh --setup-production && \
-    rm /home/frappe/*.deb
+    /usr/bin/supervisord
+
+RUN bash /setup.sh --setup-production && rm /home/frappe/*.deb
+#RUN wget https://raw.githubusercontent.com/frappe/bench/master/install_scripts/setup_frappe.sh && \
+    #bash setup_frappe.sh --setup-production && \
+    #rm /home/frappe/*.deb
+
 RUN apt-get -y remove build-essential python-dev python-software-properties libmariadbclient-dev libxslt1-dev libcrypto++-dev \
     libssl-dev  && \
     apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/ /home/$FRAPPE_USER/.cache
